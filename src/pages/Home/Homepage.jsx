@@ -3,7 +3,7 @@ import React from 'react';
 const Homepage = () => {
     return (
         <div>
-            ScholarStream MERN Project starts...
+            <h1 className='font-bold'>ScholarStream MERN Project starts...</h1>
         </div>
     );
 };
