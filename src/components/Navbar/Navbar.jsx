@@ -10,7 +10,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="bg-[#e7f7ff]">
+    <div className="bg-[#e7f7ff] rounded-b-2xl">
       <div className="navbar px-0 md:w-10/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -38,15 +38,15 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <div className="flex items-center justify-center md:gap-2">
+          <Link to={"/"} className="flex items-center justify-center md:gap-2">
             <img src={logo} className="w-10" alt="" />
             <p className="text-xl font-bold text-primary">ScholarStream</p>
-          </div>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-4">{navLinks}</ul>
         </div>
-        <div className="navbar-end gap-2">
+        <div className="navbar-end gap-3">
           <Link
             to={"/login"}
             className="btn btn-primary shadow-none border-none text-white font-medium btn-sm"

@@ -13,6 +13,10 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #007EA7;
+  --color-primary: #3ca0c2;
   --color-secondary: #0F7771;
+  --color-accent: #dcdfe6;
+}
+nav> a {
+    color: #dcdfe6;
 }
