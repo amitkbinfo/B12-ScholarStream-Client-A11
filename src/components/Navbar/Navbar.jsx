@@ -38,9 +38,11 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <Link to={"/"} className="flex items-center justify-center md:gap-2">
+          <Link to={"/"} className="flex items-center justify-center gap-2">
             <img src={logo} className="w-10" alt="" />
-            <p className="text-xl font-bold text-primary">ScholarStream</p>
+            <p className="text-base md:text-xl font-bold text-primary">
+              ScholarStream
+            </p>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
