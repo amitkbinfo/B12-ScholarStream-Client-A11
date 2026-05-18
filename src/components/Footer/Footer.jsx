@@ -39,7 +39,7 @@ const Footer = () => {
             <a className="link link-hover mb-1">Cookie policy</a>
           </nav>
         </div>
-        <form className="flex-1 flex flex-col items-center text-center">
+        <div className="flex-1 flex flex-col items-center text-center">
           <h6 className="footer-title">Newsletter</h6>
           <fieldset className="w-80">
             <label>Enter your email address</label>
@@ -54,7 +54,7 @@ const Footer = () => {
               </button>
             </div>
           </fieldset>
-        </form>
+        </div>
       </footer>
       <hr className="my-10 text-primary w-full" />
       <small className="flex justify-center items-center w-full text-xs gap-1">
