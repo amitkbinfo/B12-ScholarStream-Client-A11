@@ -47,9 +47,9 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="identity@gmail.com"
-                className="input input-bordered join-item outline-none text-black"
+                className="input input-bordered rounded-l-lg join-item outline-none text-black"
               />
-              <button className="btn btn-primary join-item text-white">
+              <button className="btn btn-primary rounded-r-lg join-item text-white">
                 Subscribe
               </button>
             </div>

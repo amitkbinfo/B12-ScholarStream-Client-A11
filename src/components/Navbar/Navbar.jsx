@@ -51,13 +51,13 @@ const Navbar = () => {
         <div className="navbar-end gap-3">
           <Link
             to={"/login"}
-            className="btn btn-primary shadow-none border-none text-white font-medium btn-sm"
+            className="btn btn-primary rounded-lg shadow-none border-none text-white font-medium btn-sm"
           >
             Login
           </Link>
           <Link
             to={"/register"}
-            className="btn btn-secondary shadow-none border-none text-white font-medium btn-sm"
+            className="btn btn-secondary rounded-lg shadow-none border-none text-white font-medium btn-sm"
           >
             Register
           </Link>
