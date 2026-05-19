@@ -1,7 +1,7 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import React from "react";
 
-const LoadingPage = () => {
+const LoadingSpinner = () => {
   return (
     <div className="flex justify-center items-center py-10">
       <DotLottieReact
@@ -14,4 +14,4 @@ const LoadingPage = () => {
   );
 };
 
-export default LoadingPage;
+export default LoadingSpinner;

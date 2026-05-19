@@ -42,12 +42,7 @@ const Login = () => {
             <input
               type={showPassword ? "text" : "password"}
               {...register("password", {
-                required: "Password is required",
-                pattern: {
-                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{6,}$/,
-                  message:
-                    "Min 6 chars, include uppercase, lowercase & special character",
-                },
+                required: "Enter your password",
               })}
               className="input w-full outline-none rounded-lg border-none mb-2"
               placeholder="Password"
