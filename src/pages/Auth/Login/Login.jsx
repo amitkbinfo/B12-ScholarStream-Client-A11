@@ -1,21 +1,34 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import useAuth from "../../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Login = () => {
-  const { user } = useAuth();
-  console.log(user);
+  const { signInUser } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
-  const [showPassword, setShowPassword] = useState(false);
+
   const handleLogin = (data) => {
-    console.log(data);
+    signInUser(data.email, data.password)
+      .then((result) => {
+        console.log(result.user);
+        toast.success(`Successfully Logged In ${result.user?.displayName}.`);
+        navigate(location?.state || "/");
+        reset();
+      })
+      .catch(() => {
+        toast.error("Incorrect Email or Password!");
+      });
   };
   return (
     <div className="bg-[#e7f7ff] rounded-2xl p-20 max-w-4xl mx-auto">

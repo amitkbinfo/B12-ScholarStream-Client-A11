@@ -7,7 +7,7 @@ import { IoLogOut } from "react-icons/io5";
 import { toast } from "react-toastify";
 const Navbar = () => {
   const { user, loading, signOutUser } = useAuth();
-  const navigate= useNavigate();
+  const navigate = useNavigate();
   const navLinks = (
     <>
       <MyLink to={"/"}>Home</MyLink>
@@ -18,7 +18,7 @@ const Navbar = () => {
     signOutUser()
       .then(() => {
         toast.success(`Successfully Logout!`);
-        navigate("/login")
+        navigate("/login");
       })
       .catch((err) => {
         toast.error(err.code);

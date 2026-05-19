@@ -35,21 +35,20 @@ const Register = () => {
             reset();
           })
           .catch((err) => {
-            console.log(err.code);
+            toast.error(err.code);
           });
 
         //   Logout after Registration
         signOutUser()
           .then(() => {
-            console.log("Successfully Logout!");
             navigate(location?.state || "/login");
           })
           .catch((err) => {
-            console.log(err.code);
+            toast.error(err.code);
           });
       })
       .catch((err) => {
-        console.log(err.code);
+        toast.error(err.code);
       });
   };
   return (
