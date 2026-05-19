@@ -1,12 +1,28 @@
 import React from "react";
+import useAuth from "../../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const SocialLogin = () => {
+  const { googleSignIn } = useAuth();
+
+  const handleGoogle = () => {
+    googleSignIn()
+      .then((result) => {
+        toast.success(`Registration successful, ${result.user.displayName}!`);
+      })
+      .catch((err) => {
+        toast.error(err.code);
+      });
+  };
   return (
     <div className="text-center space-y-3">
       <p className="mt-4 font-semibold">Or</p>
       <div>
         {/* Google */}
-        <button className="btn bg-white text-black border-none">
+        <button
+          onClick={handleGoogle}
+          className="btn bg-white text-black border-none"
+        >
           <svg
             aria-label="Google logo"
             width="16"

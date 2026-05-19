@@ -12,6 +12,7 @@ const Register = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const Register = () => {
           .then(() => {
             console.log("Update", result.user);
             toast.success(`Registration successful, ${name}!`);
+            reset();
           })
           .catch((err) => {
             console.log(err.code);
