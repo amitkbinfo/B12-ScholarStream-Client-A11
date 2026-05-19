@@ -5,12 +5,14 @@ import AllScholarships from "../pages/AllScholarships/AllScholarships";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Auth/Login/Login";
 import Register from "../pages/Auth/Register/Register";
+import ErrorPage from "../pages/SharedPage/ErrorPage";
 
 
 export const router = createBrowserRouter([
     {
         path: "/",
         Component: RootLayout,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 index: true,
