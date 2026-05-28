@@ -5,8 +5,10 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Register = () => {
+  const axiosSecure = useAxiosSecure();
   const { createUser, updateUserProfile, signOutUser } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const {
@@ -30,8 +32,21 @@ const Register = () => {
         // Update User
         updateUserProfile(userProfile)
           .then(() => {
-            console.log("Update", result.user);
+            // to store users in MongoDB
+            const user = result.user;
+            const userData = {
+              name: user.displayName,
+              email: user.email,
+              photoURL: user.photoURL,
+              role: "Student",
+              createdAt: new Date(),
+            };
+
+            axiosSecure.post("/users", userData).then((res) => {
+              console.log(res.data);
+            });
             toast.success(`Registration successful, ${name}!`);
+
             reset();
           })
           .catch((err) => {

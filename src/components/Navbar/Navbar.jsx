@@ -11,7 +11,7 @@ const Navbar = () => {
   const navLinks = (
     <>
       <MyLink to={"/"}>Home</MyLink>
-      <MyLink to={"/all-scholarships"}>All Scholarships</MyLink>
+      <MyLink to={"/scholarships"}>All Scholarships</MyLink>
     </>
   );
   const handleLogout = () => {

@@ -5,8 +5,10 @@ import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Login = () => {
+  const axiosSecure = useAxiosSecure();
   const { signInUser } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -21,8 +23,21 @@ const Login = () => {
   const handleLogin = (data) => {
     signInUser(data.email, data.password)
       .then((result) => {
-        console.log(result.user);
-        toast.success(`Successfully Logged In ${result.user?.displayName}.`);
+        const user = result.user;
+        // find duplicate or store login user in MongoDB
+        const userData = {
+          name: user?.displayName,
+          email: user?.email,
+          photoURL: user?.photoURL,
+          role: "Student",
+          createdAt: new Date(),
+        };
+        axiosSecure.post("/users", userData).then((res) => {
+          console.log(res.data);
+        });
+
+        toast.success(`Successfully Logged In ${user?.displayName}.`);
+
         navigate(location?.state || "/");
         reset();
       })

@@ -2,8 +2,10 @@ import React from "react";
 import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const SocialLogin = () => {
+  const axiosSecure = useAxiosSecure();
   const { googleSignIn } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -11,8 +13,18 @@ const SocialLogin = () => {
   const handleGoogle = () => {
     googleSignIn()
       .then((result) => {
-        toast.success(`Registration successful, ${result.user.displayName}!`);
-        navigate(location?.state || "/")
+        // Store google data to the MongoDB
+        const user = result.user;
+        const userData = {
+          name: user?.displayName,
+          email: user?.email,
+          photoURL: user?.photoURL,
+          role: "Student",
+          createdAt: new Date(),
+        };
+        axiosSecure.post("/users", userData);
+        toast.success(`Registration successful, ${user?.displayName}!`);
+        navigate(location?.state || "/");
       })
       .catch((err) => {
         toast.error(err.code);

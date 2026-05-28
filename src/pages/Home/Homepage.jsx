@@ -1,9 +1,10 @@
 import React from 'react';
+import Banner from './Banner/Banner';
 
 const Homepage = () => {
     return (
         <div className='w-10/12 mx-auto my-10'>
-            <h1 className='font-bold'>ScholarStream MERN Project starts...</h1>
+            <Banner></Banner>
         </div>
     );
 };

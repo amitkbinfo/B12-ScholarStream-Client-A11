@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
                 Component: Homepage
             },
             {
-                path: "all-scholarships",
+                path: "scholarships",
                 Component: AllScholarships
             }
         ]
