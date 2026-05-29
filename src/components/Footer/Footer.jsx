@@ -12,7 +12,7 @@ const Footer = () => {
               ScholarStream
             </p>
           </Link>
-          <p className="text-accent">
+          <p className="text-gray-300">
             “Every dream deserves a chance to grow. We're here to guide you
             toward the future you imagine.”
           </p>

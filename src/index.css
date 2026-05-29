@@ -15,7 +15,7 @@
   default: true;
   --color-primary: #3ca0c2;
   --color-secondary: #0F7771;
-  --color-accent: #dcdfe6;
+  --color-accent: #4A5565;
 }
 nav> a {
     color: #dcdfe6;
