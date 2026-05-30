@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa6";
 import { MdOutlineSubject } from "react-icons/md";
 import { TbCategoryFilled } from "react-icons/tb";
+import Reviews from "../Reviews/Reviews";
 
 const ScholarshipDetails = () => {
   const { id } = useParams();
@@ -20,6 +21,15 @@ const ScholarshipDetails = () => {
     queryKey: ["scholarship", id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/scholarships/${id}`);
+      return res.data;
+    },
+  });
+
+  const { data: reviews = [] } = useQuery({
+    queryKey: ["reviews", id],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/reviews/${id}`);
+
       return res.data;
     },
   });
@@ -62,7 +72,7 @@ const ScholarshipDetails = () => {
             </h3>
 
             <p className="mt-3 text-gray-500 flex items-center gap-2">
-              <FaLocationDot className="text-green-600" /> {universityCity},{" "}
+              <FaLocationDot className="text-[#F53871]" /> {universityCity},{" "}
               {universityCountry}
             </p>
           </div>
@@ -103,7 +113,6 @@ const ScholarshipDetails = () => {
             <p className="mt-2">{subjectCategory}</p>
           </div>
         </div>
-
         {/* Fees */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
           <div className="bg-white rounded-xl p-5 shadow-sm">
@@ -139,9 +148,7 @@ const ScholarshipDetails = () => {
             </p>
           </div>
         </div>
-
         {/* Description */}
-
         <div className="bg-white rounded-2xl p-8 mt-10 shadow-sm">
           <h2 className="text-2xl font-bold mb-4">Scholarship Description</h2>
 
@@ -162,14 +169,21 @@ const ScholarshipDetails = () => {
             Apply For Scholarship
           </button>
         </div>
-
         {/* Reviews */}
         <div className="mt-16">
           <h2 className="text-2xl font-bold mb-6">Student Reviews</h2>
 
-          <div className="bg-white rounded-2xl p-8 shadow-sm">
-            <p className="text-gray-500">No reviews available yet.</p>
-          </div>
+          {reviews.length > 0 ? (
+            <Reviews reviews={reviews}></Reviews>
+          ) : (
+            <div className="bg-white rounded-2xl p-8 shadow-sm text-center">
+              <h3 className="text-xl font-semibold">No Reviews Yet</h3>
+
+              <p className="text-gray-500 mt-2">
+                Be the first student to share an experience.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router";
 
 const ScholarshipCard = ({ scholarship }) => {
@@ -34,8 +35,9 @@ const ScholarshipCard = ({ scholarship }) => {
             </span>
           </div>
           {/* Location */}
-          <p className="text-gray-500 mt-3">
-            📍 {universityCity}, {universityCountry}
+          <p className="text-gray-500 mt-3 flex items-center gap-1">
+            <FaLocationDot className="text-[#F53871]" /> {universityCity},{" "}
+            {universityCountry}
           </p>
         </div>
 
