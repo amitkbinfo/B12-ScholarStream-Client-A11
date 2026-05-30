@@ -13,62 +13,79 @@ import MyProfile from "../Dashboard/MyProfile";
 import MyApplications from "../Dashboard/MyApplications";
 import MyReviews from "../Dashboard/MyReviews";
 import PaymentHistory from "../Dashboard/Payment/PaymentHistory";
-
+import AddScholarship from "../Dashboard/Scholarships/AddScholarship";
+import ManageScholarships from "../Dashboard/Scholarships/ManageScholarships";
 
 export const router = createBrowserRouter([
-    {
-        path: "/",
-        Component: RootLayout,
-        errorElement: <ErrorPage></ErrorPage>,
-        children: [
-            {
-                index: true,
-                Component: Homepage
-            },
-            {
-                path: "scholarships",
-                Component: AllScholarships
-            },
-            {
-                path: "scholarship/:id",
-                element: <PrivateRoute><ScholarshipDetails></ScholarshipDetails></PrivateRoute>
-            }
-        ]
-    },
-    {
-        path: "/",
-        Component: AuthLayout,
-        children: [
-            {
-                path: "login",
-                Component: Login
-            },
-            {
-                path: "register",
-                Component: Register
-            }
-        ]
-    },
-    {
-        path: "dashboard",
-        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
-        children: [
-            {
-                path: "my-profile",
-                Component: MyProfile
-            },
-            {
-                path: "my-applications",
-                Component: MyApplications
-            },
-            {
-                path: "my-reviews",
-                Component: MyReviews
-            },
-            {
-                path: "payment-history",
-                Component: PaymentHistory
-            }
-        ]
-    }
-])
+  {
+    path: "/",
+    Component: RootLayout,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        index: true,
+        Component: Homepage,
+      },
+      {
+        path: "scholarships",
+        Component: AllScholarships,
+      },
+      {
+        path: "scholarship/:id",
+        element: (
+          <PrivateRoute>
+            <ScholarshipDetails></ScholarshipDetails>
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/",
+    Component: AuthLayout,
+    children: [
+      {
+        path: "login",
+        Component: Login,
+      },
+      {
+        path: "register",
+        Component: Register,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "my-profile",
+        Component: MyProfile,
+      },
+      {
+        path: "add-scholarship",
+        Component: AddScholarship,
+      },
+      {
+        path: "manage-scholarships",
+        Component: ManageScholarships,
+      },
+      {
+        path: "my-applications",
+        Component: MyApplications,
+      },
+      {
+        path: "my-reviews",
+        Component: MyReviews,
+      },
+      {
+        path: "payment-history",
+        Component: PaymentHistory,
+      },
+    ],
+  },
+]);

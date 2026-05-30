@@ -2,7 +2,8 @@ import React from "react";
 import { Link, Outlet } from "react-router";
 import { ImProfile } from "react-icons/im";
 import { RiMailSendFill, RiMoneyDollarCircleFill } from "react-icons/ri";
-import { MdRateReview } from "react-icons/md";
+import { MdAssignmentAdd, MdRateReview } from "react-icons/md";
+import { FaUserGraduate } from "react-icons/fa6";
 const DashboardLayout = () => {
   return (
     <div className="bg-[#E7F7FF]">
@@ -38,7 +39,6 @@ const DashboardLayout = () => {
             {/* Page content here */}
             <Outlet></Outlet>
           </div>
-
           <div className="drawer-side is-drawer-close:overflow-visible">
             <label
               htmlFor="my-drawer-4"
@@ -74,6 +74,7 @@ const DashboardLayout = () => {
                 </li>
 
                 {/* Our Dashboard Link */}
+                {/* My Profile */}
                 <li>
                   <Link
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
@@ -85,6 +86,35 @@ const DashboardLayout = () => {
                     <span className="is-drawer-close:hidden">My Profile</span>
                   </Link>
                 </li>
+                {/* Add Scholarship */}
+                <li>
+                  <Link
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Add Scholarship"
+                    to={"add-scholarship"}
+                  >
+                    {" "}
+                    <MdAssignmentAdd className="text-xl" />{" "}
+                    <span className="is-drawer-close:hidden">
+                      Add Scholarship
+                    </span>
+                  </Link>
+                </li>
+                {/* Manage Scholarships */}
+                <li>
+                  <Link
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Manage Scholarships"
+                    to={"manage-scholarships"}
+                  >
+                    {" "}
+                    <FaUserGraduate className="text-xl" />{" "}
+                    <span className="is-drawer-close:hidden">
+                      Manage Scholarships
+                    </span>
+                  </Link>
+                </li>
+                {/* My Application */}
                 <li>
                   <Link
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
@@ -98,6 +128,7 @@ const DashboardLayout = () => {
                     </span>
                   </Link>
                 </li>
+                {/* My Reviews */}
                 <li>
                   <Link
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
@@ -109,11 +140,12 @@ const DashboardLayout = () => {
                     <span className="is-drawer-close:hidden">My Reviews</span>
                   </Link>
                 </li>
+                {/* Payment History */}
                 <li>
                   <Link
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                     data-tip="Payment History"
-                    to={"/dashboard/payment-history"}
+                    to={"payment-history"}
                   >
                     {" "}
                     <RiMoneyDollarCircleFill className="text-2xl" />{" "}
