@@ -10,14 +10,11 @@ const TopScholarships = () => {
   const { data: scholarships = [], isLoading } = useQuery({
     queryKey: ["topScholarships"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/scholarships?limit=6");
+      const res = await axiosSecure.get("/scholarships?sort=lowestFee&limit=6");
       return res.data;
     },
   });
 
-  if (isLoading) {
-    return <LoadingSpinner></LoadingSpinner>;
-  }
   return (
     <div className="mt-10">
       <div className="text-center mb-10">
@@ -28,20 +25,29 @@ const TopScholarships = () => {
         </p>
       </div>
       {/*  Top Scholarships */}
-      <div className="grid grid-cols-1  md:grid-cols-3 gap-8">
-        {scholarships.map((scholarship) => (
-          <ScholarshipCard key={scholarship._id} scholarship={scholarship} />
-        ))}
-      </div>
+      {isLoading ? (
+        <LoadingSpinner></LoadingSpinner>
+      ) : (
+        <div>
+          <div className="grid grid-cols-1  md:grid-cols-3 gap-8">
+            {scholarships.map((scholarship) => (
+              <ScholarshipCard
+                key={scholarship._id}
+                scholarship={scholarship}
+              />
+            ))}
+          </div>
 
-      <div className="text-center mt-10">
-        <Link
-          to="/scholarships"
-          className="btn shadow-none border-primary text-primary hover:btn-primary hover:text-white hover:border-none px-6 rounded-lg"
-        >
-          View All Scholarships
-        </Link>
-      </div>
+          <div className="text-center mt-10">
+            <Link
+              to="/scholarships"
+              className="btn shadow-none border-primary text-primary hover:btn-primary hover:text-white hover:border-none px-6 rounded-lg"
+            >
+              View All Scholarships
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
