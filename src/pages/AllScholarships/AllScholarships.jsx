@@ -59,10 +59,10 @@ const AllScholarships = () => {
           </label>
         </div>
         {/* Filter */}
-        <div className="mt-5">
+        <div className="mt-5 flex justify-end">
           {/* By Scholarship Category */}
           <select
-            className="select w-fit select-bordered rounded-xl mr-3"
+            className="btn btn-sm font-medium text-sm select w-fit select-bordered rounded-xl mr-3"
             value={scholarshipCategory}
             onChange={(e) => setScholarshipCategory(e.target.value)}
           >
@@ -73,7 +73,7 @@ const AllScholarships = () => {
           </select>
           {/* By Subject Category */}
           <select
-            className="select w-fit select-bordered rounded-xl mr-3"
+            className="btn btn-sm font-medium text-sm select w-fit select-bordered rounded-xl mr-3"
             value={subjectCategory}
             onChange={(e) => setSubjectCategory(e.target.value)}
           >
@@ -85,7 +85,7 @@ const AllScholarships = () => {
           </select>
           {/* By Location of the University */}
           <select
-            className="select w-fit select-bordered rounded-xl"
+            className="btn btn-sm font-medium text-sm select w-fit select-bordered rounded-xl"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
           >
