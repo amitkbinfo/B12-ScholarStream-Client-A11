@@ -3,16 +3,17 @@ import { Link } from "react-router";
 const ScholarshipCard = ({ scholarship }) => {
   const {
     _id,
-    scholarshipName,
     universityName,
     universityImage,
     universityCountry,
+    universityCity,
     scholarshipCategory,
     applicationFees,
   } = scholarship;
 
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition h-full flex flex-col">
+    <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 h-full flex flex-col">
+      {/* University Image */}
       <img
         src={universityImage}
         alt={universityName}
@@ -21,24 +22,27 @@ const ScholarshipCard = ({ scholarship }) => {
 
       <div className="p-5 flex flex-col grow">
         <div className="grow">
-          <h3 className="text-xl font-semibold min-h-16">{scholarshipName}</h3>
+          {/* University Name */}
+          <h3 className="text-xl font-semibold">{universityName}</h3>
 
-          <p className="text-gray-500 text-sm">{universityName}</p>
-
-          <p className="text-gray-500 text-sm">{universityCountry}</p>
-
-          <div className="flex justify-between items-center mt-4">
+          {/* Category + Fee */}
+          <div className="flex justify-between items-center mt-5">
             <span className="badge badge-outline">{scholarshipCategory}</span>
 
             <span className="font-semibold text-primary">
               ${applicationFees}
             </span>
           </div>
+          {/* Location */}
+          <p className="text-gray-500 mt-3">
+            📍 {universityCity}, {universityCountry}
+          </p>
         </div>
 
+        {/* View Details */}
         <Link
           to={`/scholarship/${_id}`}
-          className="btn btn-primary text-white  border-none shadow-none btn-sm w-full mt-5 rounded-lg"
+          className="btn btn-primary text-white  border-none shadow-none btn-sm w-full mt-3 rounded-lg"
         >
           View Details
         </Link>
