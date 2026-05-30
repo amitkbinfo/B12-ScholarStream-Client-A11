@@ -8,6 +8,11 @@ import Register from "../pages/Auth/Register/Register";
 import ErrorPage from "../pages/SharedPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import ScholarshipDetails from "../pages/AllScholarships/ScholarshipDetails";
+import DashboardLayout from "../layouts/DashboardLayout";
+import MyProfile from "../Dashboard/MyProfile";
+import MyApplications from "../Dashboard/MyApplications";
+import MyReviews from "../Dashboard/MyReviews";
+import PaymentHistory from "../Dashboard/Payment/PaymentHistory";
 
 
 export const router = createBrowserRouter([
@@ -41,6 +46,28 @@ export const router = createBrowserRouter([
             {
                 path: "register",
                 Component: Register
+            }
+        ]
+    },
+    {
+        path: "dashboard",
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children: [
+            {
+                path: "my-profile",
+                Component: MyProfile
+            },
+            {
+                path: "my-applications",
+                Component: MyApplications
+            },
+            {
+                path: "my-reviews",
+                Component: MyReviews
+            },
+            {
+                path: "payment-history",
+                Component: PaymentHistory
             }
         ]
     }
