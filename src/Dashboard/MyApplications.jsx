@@ -17,9 +17,7 @@ const MyApplications = () => {
     queryKey: ["applications", user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
-      const res = await axiosSecure.get(
-        `/applications?email=${user.email}`
-      );
+      const res = await axiosSecure.get(`/applications?email=${user.email}`);
 
       return res.data;
     },
@@ -35,16 +33,10 @@ const MyApplications = () => {
     });
 
     if (result.isConfirmed) {
-      const res = await axiosSecure.delete(
-        `/applications/${id}`
-      );
+      const res = await axiosSecure.delete(`/applications/${id}`);
 
       if (res.data.deletedCount) {
-        Swal.fire(
-          "Deleted!",
-          "Application removed.",
-          "success"
-        );
+        Swal.fire("Deleted!", "Application removed.", "success");
 
         refetch();
       }
@@ -58,15 +50,10 @@ const MyApplications = () => {
   return (
     <div className="p-8">
       <div className="bg-white rounded-2xl shadow p-6">
-
-        <h2 className="text-3xl font-bold mb-6">
-          My Applications
-        </h2>
+        <h2 className="text-3xl font-bold mb-6">My Applications</h2>
 
         <div className="overflow-x-auto">
-
           <table className="table">
-
             <thead>
               <tr>
                 <th>#</th>
@@ -86,97 +73,67 @@ const MyApplications = () => {
             </thead>
 
             <tbody>
+              {applications.map((application, index) => (
+                <tr key={application._id}>
+                  <td>{index + 1}</td>
 
-              {applications.map(
-                (application, index) => (
-                  <tr key={application._id}>
-                    <td>{index + 1}</td>
+                  <td>{application.universityName}</td>
 
-                    <td>
-                      {application.universityName}
-                    </td>
+                  <td>{application.subjectCategory}</td>
 
-                    <td>
-                      {application.subjectCategory}
-                    </td>
+                  <td>${application.applicationFees}</td>
 
-                    <td>
-                      $
-                      {
-                        application.applicationFees
-                      }
-                    </td>
+                  <td>
+                    <span className="badge badge-primary text-white">
+                      {application.applicationStatus}
+                    </span>
+                  </td>
 
-                    <td>
-                      <span className="badge badge-primary text-white">
-                        {
-                          application.applicationStatus
-                        }
-                      </span>
-                    </td>
+                  <td>{application.feedback || "No Feedback"}</td>
 
-                    <td>
-                      {application.feedback ||
-                        "No Feedback"}
-                    </td>
+                  <td>
+                    <div className="flex flex-wrap gap-2">
+                      <button className="btn btn-info btn-xs text-white">
+                        Details
+                      </button>
 
-                    <td>
-
-                      <div className="flex flex-wrap gap-2">
-
-                        <button className="btn btn-info btn-xs text-white">
-                          Details
-                        </button>
-
-                        {application.applicationStatus ===
-                          "pending" && (
-                          <>
-                            <button className="btn btn-warning btn-xs text-white border-none shadow-none">
-                              Edit
-                            </button>
-
-                            <button
-                              onClick={() =>
-                                handleDelete(
-                                  application._id
-                                )
-                              }
-                              className="btn btn-error btn-xs text-white border-none shadow-none"
-                            >
-                              Delete
-                            </button>
-                          </>
-                        )}
-
-                        {application.applicationStatus ===
-                          "pending" &&
-                          application.paymentStatus ===
-                            "unpaid" && (
-                            <button className="btn btn-success btn-xs text-white">
-                              Pay
-                            </button>
-                          )}
-
-                        {application.applicationStatus ===
-                          "completed" && (
-                          <button className="btn btn-primary btn-xs text-white">
-                            Add Review
+                      {application.applicationStatus === "pending" && (
+                        <>
+                          <button className="btn btn-warning btn-xs text-white border-none shadow-none">
+                            Edit
                           </button>
+
+                          <button
+                            onClick={() => handleDelete(application._id)}
+                            className="btn btn-error btn-xs text-white border-none shadow-none"
+                          >
+                            Delete
+                          </button>
+                        </>
+                      )}
+
+                      {application.paymentStatus === "unpaid" &&
+                        application.applicationStatus === "pending" && (
+                          <Link
+                            to={`/dashboard/payment/${application._id}`}
+                            className="btn btn-success btn-xs"
+                          >
+                            Pay
+                          </Link>
                         )}
 
-                      </div>
-
-                    </td>
-                  </tr>
-                )
-              )}
-
+                      {application.applicationStatus === "completed" && (
+                        <button className="btn btn-primary btn-xs text-white">
+                          Add Review
+                        </button>
+                      )}
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
-
           </table>
-
         </div>
-
       </div>
     </div>
   );

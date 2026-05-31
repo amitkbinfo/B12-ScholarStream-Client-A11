@@ -73,7 +73,7 @@ const ManageScholarships = () => {
                 <td>
                   {/* Update */}
                   <Link
-                    to={`update-scholarship/${scholarship._id}`}
+                    to={`/dashboard/update-scholarship/${scholarship._id}`}
                     className="btn btn-primary btn-sm border-none shadow-none mr-2"
                   >
                     Update

@@ -20,6 +20,10 @@ import Analytics from "../Dashboard/Admin/Analytics";
 import ManageApplications from "../Dashboard/Moderator/ManageApplications";
 import AllReviews from "../Dashboard/Moderator/AllReviews";
 import ApplyScholarship from "../pages/AllScholarships/ApplyScholarship";
+import UpdateScholarship from "../Dashboard/Scholarships/UpdateScholarship";
+import Payment from "../Dashboard/Payment/Payment";
+import PaymentSuccess from "../Dashboard/Payment/PaymentSuccess";
+import PaymentFailed from "../Dashboard/Payment/PaymentFailed";
 
 export const router = createBrowserRouter([
   {
@@ -92,6 +96,10 @@ export const router = createBrowserRouter([
         Component: ManageScholarships,
       },
       {
+        path: "update-scholarship/:id",
+        Component: UpdateScholarship,
+      },
+      {
         path: "manage-users",
         Component: ManageUsers,
       },
@@ -114,6 +122,18 @@ export const router = createBrowserRouter([
       {
         path: "my-reviews",
         Component: MyReviews,
+      },
+      {
+        path: "payment/:id",
+        Component: Payment,
+      },
+      {
+        path: "payment-success",
+        Component: PaymentSuccess,
+      },
+      {
+        path: "payment-failed",
+        Component: PaymentFailed,
       },
       {
         path: "payment-history",

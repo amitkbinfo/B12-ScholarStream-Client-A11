@@ -59,22 +59,18 @@ const ApplyScholarship = () => {
       appliedAt: new Date(),
     };
 
-    const res = await axiosSecure.post(
-      "/applications",
-      applicationData
-    );
+    const res = await axiosSecure.post("/applications", applicationData);
 
     if (res.data.insertedId) {
       toast.success("Application Submitted Successfully");
 
-      navigate("/dashboard/my-applications");
+      navigate(`/dashboard/payment/${res.data.insertedId}`);
     }
   };
 
   return (
     <div className="w-11/12 md:w-10/12 mx-auto my-10">
       <div className="bg-[#E7F7FF] rounded-2xl p-8">
-
         <h2 className="text-3xl font-bold text-center mb-8">
           Apply For Scholarship
         </h2>
@@ -86,9 +82,7 @@ const ApplyScholarship = () => {
           {/* Scholarship Info */}
 
           <fieldset className="fieldset">
-            <label className="label text-black">
-              Scholarship Name
-            </label>
+            <label className="label text-black">Scholarship Name</label>
 
             <input
               type="text"
@@ -99,9 +93,7 @@ const ApplyScholarship = () => {
           </fieldset>
 
           <fieldset className="fieldset">
-            <label className="label text-black">
-              University Name
-            </label>
+            <label className="label text-black">University Name</label>
 
             <input
               type="text"
@@ -112,9 +104,7 @@ const ApplyScholarship = () => {
           </fieldset>
 
           <fieldset className="fieldset">
-            <label className="label text-black">
-              Subject Category
-            </label>
+            <label className="label text-black">Subject Category</label>
 
             <input
               type="text"
@@ -125,9 +115,7 @@ const ApplyScholarship = () => {
           </fieldset>
 
           <fieldset className="fieldset">
-            <label className="label text-black">
-              Application Fee
-            </label>
+            <label className="label text-black">Application Fee</label>
 
             <input
               type="text"
@@ -140,9 +128,7 @@ const ApplyScholarship = () => {
           {/* Phone */}
 
           <fieldset className="fieldset">
-            <label className="label text-black">
-              Phone Number
-            </label>
+            <label className="label text-black">Phone Number</label>
 
             <input
               type="number"
@@ -154,18 +140,14 @@ const ApplyScholarship = () => {
             />
 
             {errors.phone && (
-              <p className="text-red-600">
-                {errors.phone.message}
-              </p>
+              <p className="text-red-600">{errors.phone.message}</p>
             )}
           </fieldset>
 
           {/* Photo */}
 
           <fieldset className="fieldset">
-            <label className="label text-black">
-              Applicant Photo URL
-            </label>
+            <label className="label text-black">Applicant Photo URL</label>
 
             <input
               type="url"
@@ -177,18 +159,14 @@ const ApplyScholarship = () => {
             />
 
             {errors.photo && (
-              <p className="text-red-600">
-                {errors.photo.message}
-              </p>
+              <p className="text-red-600">{errors.photo.message}</p>
             )}
           </fieldset>
 
           {/* Gender */}
 
           <fieldset className="fieldset">
-            <label className="label text-black">
-              Gender
-            </label>
+            <label className="label text-black">Gender</label>
 
             <select
               {...register("gender", {
@@ -196,9 +174,7 @@ const ApplyScholarship = () => {
               })}
               className="select w-full rounded-lg border-none outline-none"
             >
-              <option value="">
-                Select Gender
-              </option>
+              <option value="">Select Gender</option>
 
               <option>Male</option>
 
@@ -208,18 +184,14 @@ const ApplyScholarship = () => {
             </select>
 
             {errors.gender && (
-              <p className="text-red-600">
-                {errors.gender.message}
-              </p>
+              <p className="text-red-600">{errors.gender.message}</p>
             )}
           </fieldset>
 
           {/* Applying Degree */}
 
           <fieldset className="fieldset">
-            <label className="label text-black">
-              Applying Degree
-            </label>
+            <label className="label text-black">Applying Degree</label>
 
             <select
               {...register("degree", {
@@ -227,9 +199,7 @@ const ApplyScholarship = () => {
               })}
               className="select w-full rounded-lg border-none outline-none"
             >
-              <option value="">
-                Select Degree
-              </option>
+              <option value="">Select Degree</option>
 
               <option>Diploma</option>
 
@@ -241,18 +211,14 @@ const ApplyScholarship = () => {
             </select>
 
             {errors.degree && (
-              <p className="text-red-600">
-                {errors.degree.message}
-              </p>
+              <p className="text-red-600">{errors.degree.message}</p>
             )}
           </fieldset>
 
           {/* SSC */}
 
           <fieldset className="fieldset">
-            <label className="label text-black">
-              SSC Result
-            </label>
+            <label className="label text-black">SSC Result</label>
 
             <input
               type="text"
@@ -263,19 +229,13 @@ const ApplyScholarship = () => {
               placeholder="5.00"
             />
 
-            {errors.ssc && (
-              <p className="text-red-600">
-                {errors.ssc.message}
-              </p>
-            )}
+            {errors.ssc && <p className="text-red-600">{errors.ssc.message}</p>}
           </fieldset>
 
           {/* HSC */}
 
           <fieldset className="fieldset">
-            <label className="label text-black">
-              HSC Result
-            </label>
+            <label className="label text-black">HSC Result</label>
 
             <input
               type="text"
@@ -286,19 +246,13 @@ const ApplyScholarship = () => {
               placeholder="5.00"
             />
 
-            {errors.hsc && (
-              <p className="text-red-600">
-                {errors.hsc.message}
-              </p>
-            )}
+            {errors.hsc && <p className="text-red-600">{errors.hsc.message}</p>}
           </fieldset>
 
           {/* Study Gap */}
 
           <fieldset className="fieldset md:col-span-2">
-            <label className="label text-black">
-              Study Gap (optional)
-            </label>
+            <label className="label text-black">Study Gap (optional)</label>
 
             <input
               type="text"
@@ -311,9 +265,7 @@ const ApplyScholarship = () => {
           {/* Address */}
 
           <fieldset className="fieldset md:col-span-2">
-            <label className="label text-black">
-              Address
-            </label>
+            <label className="label text-black">Address</label>
 
             <textarea
               {...register("address", {
@@ -324,9 +276,7 @@ const ApplyScholarship = () => {
             />
 
             {errors.address && (
-              <p className="text-red-600">
-                {errors.address.message}
-              </p>
+              <p className="text-red-600">{errors.address.message}</p>
             )}
           </fieldset>
 
