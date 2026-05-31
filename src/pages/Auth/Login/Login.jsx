@@ -33,7 +33,6 @@ const Login = () => {
           createdAt: new Date(),
         };
         axiosSecure.post("/users", userData).then((res) => {
-          console.log(res.data);
         });
 
         toast.success(`Successfully Logged In ${user?.displayName}.`);

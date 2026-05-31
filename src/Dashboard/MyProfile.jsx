@@ -1,9 +1,10 @@
 import React from "react";
 import useAuth from "../hooks/useAuth";
+import useUserRole from "../hooks/useUserRole";
 
 const MyProfile = () => {
   const { user } = useAuth();
-
+  const [role] = useUserRole();
   return (
     <div className="max-w-5xl mx-auto">
       <div className="bg-[#e7f7ff] rounded-2xl p-8">
@@ -17,7 +18,7 @@ const MyProfile = () => {
 
           <h1 className="text-3xl font-bold mt-4">{user?.displayName}</h1>
 
-          <span className="badge badge-primary text-white mt-2">Student</span>
+          <span className="badge badge-primary text-white mt-2">{role}</span>
         </div>
 
         {/* Profile Info */}
@@ -33,11 +34,6 @@ const MyProfile = () => {
             <div className="bg-white rounded-xl p-5">
               <p className="text-gray-500">Email Address</p>
               <h3 className="font-semibold text-lg break-all">{user?.email}</h3>
-            </div>
-
-            <div className="bg-white rounded-xl p-5">
-              <p className="text-gray-500">Role</p>
-              <h3 className="font-semibold text-lg">Student</h3>
             </div>
 
             <div className="bg-white rounded-xl p-5">
@@ -60,11 +56,6 @@ const MyProfile = () => {
             <div className="bg-white rounded-xl p-6 text-center">
               <h3 className="text-3xl font-bold text-primary">0</h3>
               <p className="text-gray-500">Reviews</p>
-            </div>
-
-            <div className="bg-white rounded-xl p-6 text-center">
-              <h3 className="text-3xl font-bold text-primary">Student</h3>
-              <p className="text-gray-500">Current Role</p>
             </div>
           </div>
         </div>

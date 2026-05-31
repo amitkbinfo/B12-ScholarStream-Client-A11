@@ -15,6 +15,10 @@ import MyReviews from "../Dashboard/MyReviews";
 import PaymentHistory from "../Dashboard/Payment/PaymentHistory";
 import AddScholarship from "../Dashboard/Scholarships/AddScholarship";
 import ManageScholarships from "../Dashboard/Scholarships/ManageScholarships";
+import ManageUsers from "../Dashboard/Admin/ManageUsers/ManageUsers";
+import Analytics from "../Dashboard/Admin/Analytics";
+import ManageApplications from "../Dashboard/Moderator/ManageApplications";
+import AllReviews from "../Dashboard/Moderator/AllReviews";
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +67,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
+        index: true,
         path: "my-profile",
         Component: MyProfile,
       },
@@ -73,6 +78,22 @@ export const router = createBrowserRouter([
       {
         path: "manage-scholarships",
         Component: ManageScholarships,
+      },
+      {
+        path: "manage-users",
+        Component: ManageUsers,
+      },
+      {
+        path: "analytics",
+        Component: Analytics,
+      },
+      {
+        path: "manage-applications",
+        Component: ManageApplications,
+      },
+      {
+        path: "all-reviews",
+        Component: AllReviews,
       },
       {
         path: "my-applications",

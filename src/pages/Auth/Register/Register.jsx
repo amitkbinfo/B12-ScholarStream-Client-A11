@@ -43,7 +43,6 @@ const Register = () => {
             };
 
             axiosSecure.post("/users", userData).then((res) => {
-              console.log(res.data);
             });
             toast.success(`Registration successful, ${name}!`);
 

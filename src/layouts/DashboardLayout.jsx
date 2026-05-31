@@ -4,7 +4,177 @@ import { ImProfile } from "react-icons/im";
 import { RiMailSendFill, RiMoneyDollarCircleFill } from "react-icons/ri";
 import { MdAssignmentAdd, MdRateReview } from "react-icons/md";
 import { FaUserGraduate } from "react-icons/fa6";
+import useUserRole from "../hooks/useUserRole";
+import LoadingSpinner from "../pages/SharedPage/LoadingSpinner";
+import { FaUsersCog, FaChartPie } from "react-icons/fa";
 const DashboardLayout = () => {
+  const [role, isLoading] = useUserRole();
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  const dashboardLinks = (
+    <>
+      {role === "Admin" && (
+        <>
+          {/* My Profile */}
+          <li>
+            <Link
+              to={"my-profile"}
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="My Profile"
+            >
+              <ImProfile className="text-xl" />
+              <span className="is-drawer-close:hidden">My Profile</span>
+            </Link>
+          </li>
+
+          {/* Add Scholarship */}
+          <li>
+            <Link
+              to={"add-scholarship"}
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="Add Scholarship"
+            >
+              <MdAssignmentAdd className="text-xl" />
+              <span className="is-drawer-close:hidden">Add Scholarship</span>
+            </Link>
+          </li>
+
+          {/* Manage Scholarships */}
+          <li>
+            <Link
+              to={"manage-scholarships"}
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="Manage Scholarship"
+            >
+              <FaUserGraduate className="text-xl" />
+              <span className="is-drawer-close:hidden">
+                Manage Scholarships
+              </span>
+            </Link>
+          </li>
+
+          {/* Manage Users */}
+          <li>
+            <Link
+              to={"manage-users"}
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="Manage Users"
+            >
+              <FaUsersCog className="text-xl" />
+              <span className="is-drawer-close:hidden">Manage Users</span>
+            </Link>
+          </li>
+
+          {/* Analytics */}
+          <li>
+            <Link
+              to={"analytics"}
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="Analytics"
+            >
+              <FaChartPie className="text-xl" />
+              <span className="is-drawer-close:hidden">Analytics</span>
+            </Link>
+          </li>
+        </>
+      )}
+      {role === "Moderator" && (
+        <>
+          {/* My Profile */}
+          <li>
+            <Link
+              to={"my-profile"}
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="My Profile"
+            >
+              <ImProfile className="text-xl" />
+              <span className="is-drawer-close:hidden">My Profile</span>
+            </Link>
+          </li>
+
+          {/* Manage Applications */}
+          <li>
+            <Link
+              to={"manage-applications"}
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="Manage Applications"
+            >
+              <RiMailSendFill className="text-xl" />
+              <span className="is-drawer-close:hidden">
+                Manage Applications
+              </span>
+            </Link>
+          </li>
+
+          {/* All Reviews */}
+          <li>
+            <Link
+              to={"all-reviews"}
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="All Reviews"
+            >
+              <MdRateReview className="text-xl" />
+              <span className="is-drawer-close:hidden">All Reviews</span>
+            </Link>
+          </li>
+        </>
+      )}
+      {role === "Student" && (
+        <>
+          {/* My Profile */}
+          <li>
+            <Link
+              to={"my-profile"}
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="My Profile"
+            >
+              <ImProfile className="text-xl" />
+              <span className="is-drawer-close:hidden">My Profile</span>
+            </Link>
+          </li>
+
+          {/* My Applications */}
+          <li>
+            <Link
+              to={"my-applications"}
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="My Applications"
+            >
+              <RiMailSendFill className="text-xl" />
+              <span className="is-drawer-close:hidden">My Applications</span>
+            </Link>
+          </li>
+
+          {/* My Reviews */}
+          <li>
+            <Link
+              to={"my-reviews"}
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="My Reviews"
+            >
+              <MdRateReview className="text-xl" />
+              <span className="is-drawer-close:hidden">My Reviews</span>
+            </Link>
+          </li>
+
+          {/* Payment History */}
+          <li>
+            <Link
+              to={"payment-history"}
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+              data-tip="Payment History"
+            >
+              <RiMoneyDollarCircleFill className="text-2xl" />
+              <span className="is-drawer-close:hidden">Payment History</span>
+            </Link>
+          </li>
+        </>
+      )}
+    </>
+  );
+
   return (
     <div className="bg-[#E7F7FF]">
       <div className="w-/12 mx-auto">
@@ -74,86 +244,7 @@ const DashboardLayout = () => {
                 </li>
 
                 {/* Our Dashboard Link */}
-                {/* My Profile */}
-                <li>
-                  <Link
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="My Profile"
-                    to={"my-profile"}
-                  >
-                    {" "}
-                    <ImProfile className="text-xl" />{" "}
-                    <span className="is-drawer-close:hidden">My Profile</span>
-                  </Link>
-                </li>
-                {/* Add Scholarship */}
-                <li>
-                  <Link
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Add Scholarship"
-                    to={"add-scholarship"}
-                  >
-                    {" "}
-                    <MdAssignmentAdd className="text-xl" />{" "}
-                    <span className="is-drawer-close:hidden">
-                      Add Scholarship
-                    </span>
-                  </Link>
-                </li>
-                {/* Manage Scholarships */}
-                <li>
-                  <Link
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Manage Scholarships"
-                    to={"manage-scholarships"}
-                  >
-                    {" "}
-                    <FaUserGraduate className="text-xl" />{" "}
-                    <span className="is-drawer-close:hidden">
-                      Manage Scholarships
-                    </span>
-                  </Link>
-                </li>
-                {/* My Application */}
-                <li>
-                  <Link
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="My Applications"
-                    to={"my-applications"}
-                  >
-                    {" "}
-                    <RiMailSendFill className="text-xl" />{" "}
-                    <span className="is-drawer-close:hidden">
-                      My Applications
-                    </span>
-                  </Link>
-                </li>
-                {/* My Reviews */}
-                <li>
-                  <Link
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="My Reviews"
-                    to={"my-reviews"}
-                  >
-                    {" "}
-                    <MdRateReview className="text-xl" />{" "}
-                    <span className="is-drawer-close:hidden">My Reviews</span>
-                  </Link>
-                </li>
-                {/* Payment History */}
-                <li>
-                  <Link
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Payment History"
-                    to={"payment-history"}
-                  >
-                    {" "}
-                    <RiMoneyDollarCircleFill className="text-2xl" />{" "}
-                    <span className="is-drawer-close:hidden">
-                      Payment History
-                    </span>
-                  </Link>
-                </li>
+                {dashboardLinks}
               </ul>
             </div>
           </div>
