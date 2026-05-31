@@ -74,14 +74,14 @@ const ManageScholarships = () => {
                   {/* Update */}
                   <Link
                     to={`update-scholarship/${scholarship._id}`}
-                    className="btn btn-primary btn-sm"
+                    className="btn btn-primary btn-sm border-none shadow-none mr-2"
                   >
                     Update
                   </Link>
                   {/* Delete */}
                   <button
                     onClick={() => handleDelete(scholarship._id)}
-                    className="btn btn-error btn-sm"
+                    className="btn btn-error btn-sm border-none shadow-none"
                   >
                     Delete
                   </button>

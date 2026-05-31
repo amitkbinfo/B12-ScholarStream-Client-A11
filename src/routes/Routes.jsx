@@ -19,6 +19,7 @@ import ManageUsers from "../Dashboard/Admin/ManageUsers/ManageUsers";
 import Analytics from "../Dashboard/Admin/Analytics";
 import ManageApplications from "../Dashboard/Moderator/ManageApplications";
 import AllReviews from "../Dashboard/Moderator/AllReviews";
+import ApplyScholarship from "../pages/AllScholarships/ApplyScholarship";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ScholarshipDetails></ScholarshipDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "apply-scholarship/:id",
+        element: (
+          <PrivateRoute>
+            <ApplyScholarship />
           </PrivateRoute>
         ),
       },
@@ -68,6 +77,9 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
+        Component: MyProfile,
+      },
+      {
         path: "my-profile",
         Component: MyProfile,
       },

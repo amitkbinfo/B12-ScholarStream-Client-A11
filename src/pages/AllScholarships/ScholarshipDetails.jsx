@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import LoadingSpinner from "../SharedPage/LoadingSpinner";
 import {
@@ -162,12 +162,12 @@ const ScholarshipDetails = () => {
         </div>
         {/* Apply */}
         <div className="text-center mt-10">
-          <button
-            disabled
+          <Link
+            to={`/apply-scholarship/${id}`}
             className="btn btn-primary border-none shadow-none text-white px-10"
           >
             Apply For Scholarship
-          </button>
+          </Link>
         </div>
         {/* Reviews */}
         <div className="mt-16">
