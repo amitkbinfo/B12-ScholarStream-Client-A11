@@ -1,5 +1,6 @@
 # 🎓 ScholarStream
 
+
 A modern Scholarship Management Platform that helps students discover, apply for, and manage scholarship opportunities from universities around the world.
 
 🔗 **Live Site:** https://scholarstream-a11.web.app/

@@ -5,9 +5,13 @@ import { RouterProvider } from "react-router";
 import { router } from "./routes/Routes.jsx";
 import AuthProvider from "./contexts/AuthContext/AuthProvider.jsx";
 import { ToastContainer, Zoom } from "react-toastify";
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
+
+const savedTheme = localStorage.getItem("theme") || "light";
+document.documentElement.setAttribute("data-theme", savedTheme);
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
