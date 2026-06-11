@@ -123,12 +123,6 @@ const MyProfile = () => {
 
               <h3 className="font-semibold text-lg text-green-600">Active</h3>
             </div>
-
-            <div className="bg-white rounded-xl p-5">
-              <p className="text-gray-500">Role</p>
-
-              <h3 className="font-semibold text-lg">{role}</h3>
-            </div>
           </div>
         </div>
 
