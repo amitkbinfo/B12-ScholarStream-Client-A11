@@ -104,6 +104,12 @@ ScholarStream is a full-stack scholarship management system designed to simplify
 * Email & Password Login
 * Google Sign-In
 
+### For Testing:
+```
+Admin Email: john@gmail.com
+Admin Password: aaaA1!
+```
+
 ### Payment
 
 * Stripe
