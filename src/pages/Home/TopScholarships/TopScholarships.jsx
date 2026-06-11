@@ -10,15 +10,15 @@ const TopScholarships = () => {
   const { data: scholarships = [], isLoading } = useQuery({
     queryKey: ["topScholarships"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/scholarships?sort=lowestFee&limit=6");
+      const res = await axiosSecure.get("/scholarships?sort=lowestFee&limit=8");
       return res.data;
     },
   });
 
   return (
-    <div className="mt-10">
+    <div className="mt-20">
       <div className="text-center mb-10">
-        <h2 className="text-4xl font-bold">Top Scholarships</h2>
+        <h2 className="text-3xl md:text-4xl font-bold">Top Scholarships</h2>
 
         <p className="text-accent mt-4">
           Discover the latest scholarship opportunities.
@@ -29,7 +29,7 @@ const TopScholarships = () => {
         <LoadingSpinner></LoadingSpinner>
       ) : (
         <div>
-          <div className="grid grid-cols-1  md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1  md:grid-cols-4 gap-8">
             {scholarships.map((scholarship) => (
               <ScholarshipCard
                 key={scholarship._id}

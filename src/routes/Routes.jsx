@@ -24,6 +24,7 @@ import UpdateScholarship from "../Dashboard/Scholarships/UpdateScholarship";
 import Payment from "../Dashboard/Payment/Payment";
 import PaymentSuccess from "../Dashboard/Payment/PaymentSuccess";
 import PaymentFailed from "../Dashboard/Payment/PaymentFailed";
+import ContactSupport from "../pages/Home/FAQ/ContactSupport";
 
 export const router = createBrowserRouter([
   {
@@ -42,9 +43,7 @@ export const router = createBrowserRouter([
       {
         path: "scholarship/:id",
         element: (
-          <PrivateRoute>
             <ScholarshipDetails></ScholarshipDetails>
-          </PrivateRoute>
         ),
       },
       {
@@ -55,6 +54,10 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "contact-support",
+        Component: ContactSupport
+      }
     ],
   },
   {

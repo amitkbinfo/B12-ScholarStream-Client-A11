@@ -12,6 +12,7 @@ const Navbar = () => {
     <>
       <MyLink to={"/"}>Home</MyLink>
       <MyLink to={"/scholarships"}>All Scholarships</MyLink>
+      <MyLink to={"/contact-support"}>Contact Us</MyLink>
     </>
   );
   const handleLogout = () => {
@@ -25,7 +26,8 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="bg-[#e7f7ff] rounded-b-2xl">
+    <div className="fixed top-0 left-0 right-0 z-999">
+    <div className="bg-[#e7f7ff]/95 backdrop-blur-md rounded-b-2xl shadow-sm">
       <div className="navbar px-0 md:w-10/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -129,6 +131,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
+    </div>
     </div>
   );
 };

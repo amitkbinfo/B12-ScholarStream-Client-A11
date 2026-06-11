@@ -114,7 +114,7 @@ const AllScholarships = () => {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-10">
           {scholarships.map((scholarship) => (
             <ScholarshipCard
               key={scholarship._id}
